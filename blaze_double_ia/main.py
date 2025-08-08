@@ -1,9 +1,12 @@
-import time
-from blaze import BlazeCollector
+from flask import Flask
+import os
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "IA Blaze Double funcionando com sucesso!"
 
 if __name__ == "__main__":
-    print("🚀 IA Blaze Double iniciada.")
-    blaze = BlazeCollector()
-    while True:
-        blaze.coletar_dados()
-        time.sleep(10)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
