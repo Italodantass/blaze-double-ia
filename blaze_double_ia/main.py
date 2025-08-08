@@ -69,4 +69,10 @@ Horário previsto: <b>{agora}</b>
                     enviar_sinal_telegram(mensagem)
 
 if __name__ == "__main__":
-    asyncio.run(conectar_blaze())
+    try:
+        asyncio.run(conectar_blaze())
+    except Exception as e:
+        print(f"Erro: {e}")
+        while True:
+            pass  # impede que o processo finalize
+
